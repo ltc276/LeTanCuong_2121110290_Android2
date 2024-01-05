@@ -19,47 +19,43 @@ const HalfStar = () => (
 
 function Product(props) {
     const navigation = useNavigation();
-    const navigateProduct = () =>{navigation.navigate("Details",{id: props.item.id});};
+    const navigateProduct = () => { navigation.navigate("Details", { id: props.item.id }); };
     return (
         <TouchableOpacity style={styles.product} activeOpacity={0.8} onPress={navigateProduct}>
-            <View style={{ height: 200 }}>
-                <ImageBackground style={styles.imageBackground} imageStyle={{ marginVertical: 10 }} source={{ uri: props.item.image }} resizeMode="contain"
-                >
-                    <Text>-15%</Text>
-                </ImageBackground>
-
-            </View>
-            <View style={styles.productInfor}>
-                <View style={styles.productRating}>
-                    <FullStar />
-                    <FullStar />
-                    <FullStar />
-                    <FullStar />
-                    <HalfStar />
-                    <Text style={{ color: "#a6a6a6", fontWeight: "500" }} category="s2">
-                        (100)
+            <View style={{ height: 300 }}>
+                <ImageBackground style={styles.imageBackground} source={{ uri: props.item.image }} resizeMode="contain"></ImageBackground>
+                <View style={styles.productInfor}>
+                    <Text
+                        category="h6"
+                        style={styles.productName}
+                        numberOfLines={1}
+                        ellipsizeMode="clip"
+                    >
+                        {props.item.title}
                     </Text>
-                </View>
-
-                <Text style={styles.productBrand} category="s1">
-                    Fjallraven
-                </Text>
-                <Text
-                    category="h6"
-                    style={styles.productName}
-                    numberOfLines={1}
-                    ellipsizeMode="clip"
-                >
-                    {props.item.title}
-                </Text>
-                <View style={styles.productPriceSection}>
-                    <Text style={styles.productPriceSale}>100$</Text>
-                    <Text style={{ flex: 0.1 }}></Text>
-                    <Text status="danger" style={styles.productPrice}>
-                        {props.item.price}$
+                    <Text style={styles.productBrand} category="s1">
+                        Fjallraven
                     </Text>
+                    <View style={styles.productPriceSection}>
+                        <Text style={styles.productPriceSale}>100$</Text>
+                        <Text style={{ flex: 0.1 }}></Text>
+                        <Text status="danger" style={styles.productPrice}>
+                            {props.item.price}$
+                        </Text>
+                    </View>
+                    <View style={styles.productRating}>
+                        <FullStar />
+                        <FullStar />
+                        <FullStar />
+                        <FullStar />
+                        <HalfStar />
+                        <Text style={{ color: "#a6a6a6", fontWeight: "500" }} category="s2">
+                            (100)
+                        </Text>
+                    </View>
                 </View>
             </View>
+
 
         </TouchableOpacity>
     );
@@ -72,9 +68,15 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     imageBackground: {
-        backgroundColor: "#f0f0f0",
-        borderRadius: 20,
-        flex: 1,
+        flexShrink: 0,
+        width: 164,
+        height: 136,
+        backgroundColor: "#D8C9C9",
+        borderWidth: 5,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
     },
     productTag: {
         backgroundColor: "#ff6f69",
