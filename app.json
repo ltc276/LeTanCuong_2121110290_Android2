@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "LTANDROID2",
-    "slug": "LTANDROID2",
+    "name": "Android-2-LTC",
+    "slug": "Android-2-LTC",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,15 +24,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "build": {
-        "babel": {
-          "include": [
-            "@ui-kitten/components",
-            "@ui-kitten/eva-icons"
-          ]
-        }
-      }
+      "favicon": "./assets/favicon.png"
     }
   }
 }
