@@ -12,14 +12,13 @@ export default function Profile({ navigation }) {
       <View style={styles.profileInfoContainer}>
         <Image
           style={styles.profileImage}
-          source={{ uri: 'https://staticg.sportskeeda.com/editor/2023/06/8aabc-16869687618187-1920.jpg?w=720' }}     
-            />
+          source={{ uri: 'https://staticg.sportskeeda.com/editor/2023/06/8aabc-16869687618187-1920.jpg?w=720' }}
+        />
         <Text style={styles.userName}>Lê Cường</Text>
         <Text style={styles.userInfo}>Dev</Text>
         <Text style={styles.userInfo}>Location: Vietnamese</Text>
-        <TouchableOpacity style={styles.editButton}>
-          <Icon name="pencil" size={20} color="#fff" />
-          <Text style={styles.editButtonText}>Edit Profile</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -67,5 +66,18 @@ const styles = StyleSheet.create({
   editButtonText: {
     color: '#fff',
     marginLeft: 10,
+  },
+  buttonText: {
+    width: 100,
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+
+  },
+  button: {
+    backgroundColor: '#3399FF',
+    padding: 10,
+    marginTop: 30,
+    borderRadius: 25,
   },
 });

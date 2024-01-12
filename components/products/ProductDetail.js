@@ -2,12 +2,11 @@ import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from '../Header';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ProductDetail({ route,navigation }) {
   const { item } = route.params;
   const handlePress = () => {
-    alert("Thêm vào giỏ hàng thành công!");
+    alert("Add to cart success !");
   };
   const addToCart = async (product) => {
     try {
@@ -16,10 +15,10 @@ export default function ProductDetail({ route,navigation }) {
       cart.push(product);
       await AsyncStorage.setItem('cart', JSON.stringify(cart));
 
-      console.log('Sản phẩm đã được thêm vào giỏ hàng thành công!');
-      alert("Thêm vào giỏ hàng thành công!");
+      console.log('The product was added to the cart successfully !');
+      alert("Add to cart success !");
     } catch (error) {
-      console.error('Lỗi khi thêm vào giỏ hàng:', error);
+      console.error('Error adding to cart !', error);
     }
   };
 
@@ -33,15 +32,15 @@ export default function ProductDetail({ route,navigation }) {
       </View>
      
       <Text style={styles.productTitle}>{item.title}</Text>
-      <Text style={styles.productPrice}>Giá tiền: ${item.price}</Text>
-      <Text style={styles.productDescription}>{item.description}</Text>
-      <Text style={styles.productCategory}>Danh mục: {item.category}</Text>
+      <Text style={styles.productPrice}>Price: ${item.price}</Text>
+      <Text style={styles.productDescription}>Description: {item.description}</Text>
+      <Text style={styles.productCategory}>Category: {item.category}</Text>
     
       <TouchableOpacity
         style={styles.addToCartButton}
         onPress={() => addToCart(item)}
       >
-        <Text style={styles.addToCartButtonText} >Thêm vào giỏ hàng</Text>
+        <Text style={styles.addToCartButtonText} >Add to cart</Text>
       </TouchableOpacity>
     </View>
   );

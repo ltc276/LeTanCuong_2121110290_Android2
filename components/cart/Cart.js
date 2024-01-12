@@ -84,10 +84,10 @@ export default function Cart({navigation,navigateToProductDetail}) {
 
     AsyncStorage.setItem('cart', JSON.stringify(updatedCart))
       .then(() => {
-        console.log('Số lượng sản phẩm đã được tăng');
+        console.log('The number of products has been increased');
       })
       .catch((error) => {
-        console.error('Lỗi khi lưu giỏ hàng mới:', error);
+        console.error('Error saving new cart:', error);
       });
   };
   const handleReduceQuantity = (itemId) => {
@@ -106,10 +106,10 @@ export default function Cart({navigation,navigateToProductDetail}) {
 
   AsyncStorage.setItem('cart', JSON.stringify(updatedCart))
     .then(() => {
-      console.log('Số lượng sản phẩm đã được giảm');
+      console.log('The number of products has been reduced');
     })
     .catch((error) => {
-      console.error('Lỗi khi lưu giỏ hàng mới:', error);
+      console.error('Error saving new cart:', error);
     });
 };
 
@@ -119,7 +119,7 @@ return (
          <View style={styles.header}>
         <Header navigation={navigation} />
       </View>
-    <Text style={styles.header}>Giỏ hàng của tôi</Text>
+    <Text style={styles.header}>My Cart</Text>
     {cartItems.length > 0 ? (
       <FlatList
         data={cartItems}
@@ -131,7 +131,7 @@ return (
             <Image source={{ uri: item.image }} style={styles.productImage} />
             <View style={styles.productDetails}>
               <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.price}>Giá tiền: ${item.price}</Text>
+              <Text style={styles.price}>Price: ${item.price}</Text>
               
 
               <View style={styles.actionButtons}>
@@ -152,7 +152,7 @@ return (
                 </View>
 
                 <TouchableOpacity onPress={() => handleDeleteItem(item.id)}>
-                  <Text>Xóa</Text>
+                  <Text>Delete</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -161,14 +161,14 @@ return (
         )}
       />
     ) : (
-      <Text style={styles.emptyCartText}>Giỏ hàng trống</Text>
+      <Text style={styles.emptyCartText}>Empty cart</Text>
     )}
     <View style={styles.totalContainer}>
-      <Text style={styles.totalText}>Tổng thanh toán:</Text>
+      <Text style={styles.totalText}>Total:</Text>
       <Text style={styles.totalPrice}>${calculateTotalPrice()}</Text>
     </View>
     <TouchableOpacity style={styles.paymentButton}>
-      <Text style={styles.paymentButtonText}>Thanh toán</Text>
+      <Text style={styles.paymentButtonText}>Payment</Text>
     </TouchableOpacity>
   </View>
 );

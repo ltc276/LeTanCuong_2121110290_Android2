@@ -11,27 +11,27 @@ function Login({ navigation }) {
   style={styles.container}
 >
   <View>
-  <ImageBackground style={styles.background}>
-        <Text style={styles.title}>ĐĂNG NHẬP</Text>
+  <ImageBackground source={require('../../assets/components/Login/img/background.jpg')} style={styles.background}>
+        <Text style={styles.title}>LOGIN</Text>
         <View style={{marginTop:40}}>
           <View style={styles.iconinput}>
-            <Icon name="user" size={30} color="black" />
-            <TextInput style={styles.input} placeholder=" Nhập tên đăng nhập hoặc email" />
+            <Icon name="user-circle" size={30} color="darkblue" />
+            <TextInput style={styles.input} placeholder=" Username or Email" />
           </View>
          
           <View style={styles.iconinput}>
-            <Icon name="lock" size={30} color="black" />
-            <TextInput style={styles.input} placeholder=" Nhập mật khẩu" />
+            <Icon name="key" size={30} color="darkblue" />
+            <TextInput style={styles.input} placeholder=" Password" />
           </View>
-          <Text style={{ alignSelf: 'flex-end' }}>Quên mật khẩu?</Text>
+          <Text style={{ alignSelf: 'flex-end', color: 'darkblue' }}>Forgot your password ?</Text>
         </View>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.buttonText}>Đăng nhập</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View style={styles.rowContainer}>
-          <Text style={{ alignSelf: 'flex-end' }}>Bạn chưa có tài khoản? </Text>
+          <Text style={{ alignSelf: 'flex-end', color: 'darkblue' }}>You don't have an account ? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Text style={{ textAlign: 'center', color: 'red' }}> Đăng kí</Text>
+            <Text style={{ textAlign: 'center', color: 'blueviolet' }}> Register</Text>
           </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
+    color: 'darkblue',
+ 
   },
   container: {
     flex: 1,
@@ -69,7 +71,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
   
-    backgroundColor: 'white',
+    backgroundColor: 'aliceblue',
+    borderRadius: 25,
     
     paddingHorizontal: 10,
    
@@ -78,12 +81,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#3399FF',
     padding: 10,
     marginTop: 30,
+    borderRadius: 25,
   },
   buttonText: {
     width: 300,
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
+   
   },
   background: {
     flex: 1,

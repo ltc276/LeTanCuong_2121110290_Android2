@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Product = ({ navigation, navigateToProductDetail, addToCart }) => {
   const [data, setData] = useState([]);
@@ -57,6 +56,7 @@ const Product = ({ navigation, navigateToProductDetail, addToCart }) => {
     const truncatedTitle = truncateTitle(item.title);
 
     return (
+     
       <TouchableOpacity onPress={() => navigateToProductDetail(item)}>
         <View style={styles.productBox}>
     
@@ -74,6 +74,7 @@ const Product = ({ navigation, navigateToProductDetail, addToCart }) => {
         </View>
         </View>
       </TouchableOpacity>
+      
     );
   };
 

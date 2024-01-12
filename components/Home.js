@@ -1,14 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View,TouchableOpacity, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { ScrollView, StyleSheet, Text, View,TouchableOpacity, Image ,SafeAreaView} from 'react-native';
 import Footer from './Footer';
-import Header from './Header';
 import Product from './products/Product';
 import ProductJewelery from './products/ProductJewelery';
 import ProductElectronics from './products/ProductElectronics';
 import ProductMen from './products/ProductMen';
 import ProductWomen from './products/ProductWomen';
-import Search from './products/Search';
 import Slider from './products/Slider';
 
 export default function Home({ navigation }) {
@@ -19,24 +16,20 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
      <ScrollView>
-        <View style={styles.search}>
-        <Search />
-      </View>
       <View style={styles.slider}>
         <Slider />
       </View>    
         <View>
           <Text style={styles.textnewproduct}>Product</Text>
           <Product navigateToProductDetail={navigateToProductDetail} />
-          <Text style={styles.textnewproduct}>Jewelery</Text>
-          <ProductJewelery navigateToProductDetail={navigateToProductDetail} />
           <Text style={styles.textnewproduct}>Electronics</Text>
           <ProductElectronics navigateToProductDetail={navigateToProductDetail} />
-          <Text style={styles.textnewproduct}>Product for Men</Text>
-          <ProductMen navigateToProductDetail={navigateToProductDetail} />
+          <Text style={styles.textnewproduct}>Jewelery</Text>
+          <ProductJewelery navigateToProductDetail={navigateToProductDetail} />
           <Text style={styles.textnewproduct}>Product for Women</Text>
           <ProductWomen navigateToProductDetail={navigateToProductDetail} />
-          
+          <Text style={styles.textnewproduct}>Product for Men</Text>
+          <ProductMen navigateToProductDetail={navigateToProductDetail} />
         </View>
       </ScrollView>
       <View style={styles.footer}>

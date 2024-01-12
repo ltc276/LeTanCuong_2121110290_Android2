@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ProductJewelery = ({ navigation, navigateToProductDetail, addToCart }) => {
   const [data, setData] = useState([]);
@@ -65,9 +64,9 @@ const ProductJewelery = ({ navigation, navigateToProductDetail, addToCart }) => 
             <Text style={styles.productName}>{truncatedTitle}</Text>
             <Text style={styles.productPrice}>$ {item.price}</Text>
             <View style={styles.ratingContainer}>
-        <Text style={styles.productRating}>Đánh giá: </Text>
+        <Text style={styles.productRating}>Rating: </Text>
         <Text style={styles.ratingNumber}>{item.rating.rate}</Text>
-        <Text style={styles.ratingCount}> ({item.rating.count} đánh giá)</Text>
+        <Text style={styles.ratingCount}> ({item.rating.count} comment)</Text>
       </View>
           </View>
         </View>

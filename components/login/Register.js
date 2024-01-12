@@ -11,31 +11,31 @@ function Register({ navigation }) {
   style={styles.container}
 >
   <View>
-  <ImageBackground style={styles.background}>
-        <Text style={styles.title}>ĐĂNG KÍ</Text>
+  <ImageBackground source={require('../../assets/components/Login/img/Register.jpg')} style={styles.background}>
+        <Text style={styles.title}>Register</Text>
         <View style={{marginTop:40}}>
           <View style={styles.iconinput}>
-            <Icon name="user" size={30} color="black" />
-            <TextInput style={styles.input} placeholder=" Nhập tên đăng nhập hoặc email" />
+            <Icon name="user-circle" size={30} color="darkblue" />
+            <TextInput style={styles.input} placeholder=" Username or Email" />
           </View>
          
           <View style={styles.iconinput}>
-            <Icon name="lock" size={30} color="black" />
-            <TextInput style={styles.input} placeholder=" Nhập mật khẩu" />
+            <Icon name="key" size={30} color="darkblue" />
+            <TextInput style={styles.input} placeholder=" Password" />
           </View>
           <View style={styles.iconinput}>
-            <Icon name="lock" size={30} color="black" />
-            <TextInput style={styles.input} placeholder=" Xác nhận mật khẩu" />
+            <Icon name="key" size={30} color="darkblue" />
+            <TextInput style={styles.input} placeholder=" Confirm Password" />
           </View>
          
         </View>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>Đăng kí</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
         <View style={styles.rowContainer}>
-          <Text style={{ alignSelf: 'flex-end' }}>Bạn đã có tài khoản? </Text>
+          <Text style={{ alignSelf: 'flex-end' , color: 'darkblue' }}>You already have an account ? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ textAlign: 'center', color: 'red' }}> Đăng nhập</Text>
+            <Text style={{ textAlign: 'center', color: 'blueviolet' }}> Login</Text>
           </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
+    color: 'darkblue',
   },
   container: {
     flex: 1,
@@ -73,15 +74,18 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
   
-    backgroundColor: 'white',
+    backgroundColor: 'aliceblue',
+    borderRadius: 25,
     
     paddingHorizontal: 10,
+  
    
   },
   button: {
     backgroundColor: '#3399FF',
     padding: 10,
     marginTop: 30,
+    borderRadius: 25,
   },
   buttonText: {
     width: 300,
