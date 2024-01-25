@@ -1,10 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity,
-     KeyboardAvoidingView, ImageBackground } from 'react-native';
-import React from 'react';
+     KeyboardAvoidingView, ImageBackground, Alert } from 'react-native';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Register({ navigation }) {
+
+  const HandleRegisterCheck = async () => {
+   
+    const newUser = {
+      username: username,
+      password: password,
+    };
+    const existingAccount = await AsyncStorage.getItem("user");
+    if (existingAccount) {
+      const parsedAccount = JSON.parse(existingAccount);
+      var flag = parsedAccount.find((account) => account.username == username);
+      if (flag) {
+        Alert.alert("Message", "Account already exists !");
+        return;
+      }
+      parsedAccount.push(newUser);
+      AsyncStorage.setItem("user", JSON.stringify(parsedAccount)).then(() => {
+        AsyncStorage.getItem("user").then((res) => {
+          Alert.alert("Message", "Registered successfully !");
+          navigation.navigate("Login");
+        });
+      });
+    } else {
+      AsyncStorage.setItem("user", JSON.stringify([newUser])).then(() => {
+        AsyncStorage.getItem("user").then((res) => {
+          Alert.alert("Message", "Registered successfully !");
+          navigation.navigate("Login");
+        });
+      });
+    }
+  };
+const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRePassword] = useState("");
+
   return (
     <KeyboardAvoidingView
   behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -16,20 +52,20 @@ function Register({ navigation }) {
         <View style={{marginTop:40}}>
           <View style={styles.iconinput}>
             <Icon name="user-circle" size={30} color="darkblue" />
-            <TextInput style={styles.input} placeholder=" Username or Email" />
+            <TextInput style={styles.input} placeholder=" Username or Email" onChangeText={(e) => setUsername(e)}/>
           </View>
          
           <View style={styles.iconinput}>
             <Icon name="key" size={30} color="darkblue" />
-            <TextInput style={styles.input} placeholder=" Password" />
+            <TextInput style={styles.input} placeholder=" Password" onChangeText={(e) => setPassword(e)}/>
           </View>
           <View style={styles.iconinput}>
             <Icon name="key" size={30} color="darkblue" />
-            <TextInput style={styles.input} placeholder=" Confirm Password" />
+            <TextInput style={styles.input} placeholder=" Confirm Password" onChangeText={(e) => setRePassword(e)}/>
           </View>
          
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.button} onPress={() => HandleRegisterCheck()}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
         <View style={styles.rowContainer}>

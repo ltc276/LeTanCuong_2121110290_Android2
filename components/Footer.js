@@ -8,33 +8,32 @@ export default function Footer({ navigation }) {
       <View style={styles.buttonContainer}>
 
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <View style={styles.centericon}>      
-              <Icon name="home" size={20} color="black" />
-            <Text style={{fontSize:12}}>Home</Text>
-          </View>
-        </TouchableOpacity>
-
-
-       
-        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-          <View style={styles.centericon}>          
-              <Icon name="shopping-cart" size={20} color="black" />       
-            <Text style={{fontSize:12}}>Cart</Text>
-          </View>
-        </TouchableOpacity>
-        
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
           <View style={styles.centericon}>
-              <Icon name="heart" size={20} color="black" />
-            <Text style={{fontSize:12}}>Yêu thích</Text>
+            <Icon name="home" size={20} color="black" />
+            <Text style={{ fontSize: 12 }}>Home</Text>
           </View>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Category')}>
+          <View style={styles.centericon}>
+            <Icon name="shopping-bag" size={20} color="black" />
+            <Text style={{ fontSize: 12 }}>Category</Text>
+          </View>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+          <View style={styles.centericon}>
+            <Icon name="shopping-cart" size={20} color="black" />
+            <Text style={{ fontSize: 12 }}>Cart</Text>
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-        <View style={styles.centericon}>     
-            <Icon name="user" size={20} color="black" />    
-          <Text style={{fontSize:12}}>Me</Text>
-        </View>
+          <View style={styles.centericon}>
+            <Icon name="user" size={20} color="black" />
+            <Text style={{ fontSize: 12 }}>Me</Text>
+          </View>
         </TouchableOpacity>
 
       </View>
@@ -64,11 +63,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 50, 
-    width: '100%', 
+    paddingHorizontal: 20,
+    width: '100%',
   },
-  centericon:{
+  centericon: {
     alignItems: 'center',
-  
+
   }
 });

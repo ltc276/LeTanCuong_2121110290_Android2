@@ -1,10 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity,
-     KeyboardAvoidingView, ImageBackground } from 'react-native';
-import React from 'react';
+     KeyboardAvoidingView, ImageBackground , Alert} from 'react-native';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Login({ navigation }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const LoginFunction = async () => {
+    const listAccount = await AsyncStorage.getItem("user");
+    if (listAccount) {
+      const parseAccounts = JSON.parse(listAccount);
+      var flag = parseAccounts.find(
+        (account) =>
+          account.username == username && account.password == password
+      );
+      if (flag) {
+        Alert.alert("Message", "Logged in successfully!");
+
+        navigation.navigate("Home");
+      } else {
+        Alert.alert("Error", "Account or password is incorrect!");
+        return;
+      }
+    }
+  };
+
+  
   return (
     <KeyboardAvoidingView
   behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -12,20 +35,20 @@ function Login({ navigation }) {
 >
   <View>
   <ImageBackground source={require('../../assets/components/Login/img/background.jpg')} style={styles.background}>
-        <Text style={styles.title}>LOGIN</Text>
+        <Text style={styles.title}>LOG IN</Text>
         <View style={{marginTop:40}}>
           <View style={styles.iconinput}>
             <Icon name="user-circle" size={30} color="darkblue" />
-            <TextInput style={styles.input} placeholder=" Username or Email" />
+            <TextInput style={styles.input} placeholder=" Username or Email" onChangeText={(e) => setUsername(e)}/>
           </View>
          
           <View style={styles.iconinput}>
             <Icon name="key" size={30} color="darkblue" />
-            <TextInput style={styles.input} placeholder=" Password" />
+            <TextInput style={styles.input} placeholder=" Password" onChangeText={(e) => setPassword(e)}/>
           </View>
           <Text style={{ alignSelf: 'flex-end', color: 'darkblue' }}>Forgot your password ?</Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.button} onPress={() => LoginFunction()}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View style={styles.rowContainer}>

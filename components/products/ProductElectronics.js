@@ -7,10 +7,10 @@ const ProductElectronics = ({ navigation, navigateToProductDetail, addToCart }) 
   const [numColumns, setNumColumns] = useState(2);
 
   useEffect(() => {
-    getDataUsingSimpleGetCall();
+    getData();
   }, []);
 
-  const getDataUsingSimpleGetCall = () => {
+  const getData = () => {
     axios
       .get('https://fakestoreapi.com/products/category/electronics')
       .then(function (response) {

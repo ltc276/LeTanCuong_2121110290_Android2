@@ -7,6 +7,7 @@ import ProductElectronics from './products/ProductElectronics';
 import ProductMen from './products/ProductMen';
 import ProductWomen from './products/ProductWomen';
 import Slider from './products/Slider';
+import Search from './products/Search';
 
 export default function Home({ navigation }) {
   const navigateToProductDetail = (item) => {
@@ -17,6 +18,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
      <ScrollView>
       <View style={styles.slider}>
+        <Search />
         <Slider />
       </View>    
         <View>
